@@ -17,8 +17,6 @@ class Lessen extends Controller
 
         $rows1 = '';
 
-       
-
         foreach ($result as $info) {
             $d = new DateTimeImmutable($info->DatumInDienst, new DateTimeZone('Europe/Amsterdam'));
             $rows .= "<tr>
@@ -54,7 +52,7 @@ class Lessen extends Controller
         // var_dump($result);
 
         $rows = "";
-         $rows2 = '';
+        $rows2 = '';
         foreach ($result as $mankement) {
             $rows .= "<tr>      
                         <td>$mankement->TypeVoertuig</td>
@@ -65,16 +63,12 @@ class Lessen extends Controller
                         <td>$mankement->Rijbewijscategorie</td>
                       </tr>";
 
-
             $rows2 = " 
                     
                       Naam: $mankement->Voornaam <br>
                       Datum in dienst: $mankement->DatumInDienst <br>
-                      Aantal Sterren: $mankement->AantalSterren <br>
-  
-          ";
+                      Aantal Sterren: $mankement->AantalSterren <br>  ";
         }
-
 
         $data = [
             'title' => 'Door instructeur gebruikte voertuigen',
@@ -94,22 +88,20 @@ class Lessen extends Controller
             'topicError' => ''
         ];
 
-   
 
-    $data = [
-        'title' => 'Voer In ',
-        'lesId' => $_POST['lesId'],
-        'mankement' => $_POST['mankement'],
-        'topicError' => ''
-    ];
+        $data = [
+            'title' => 'Voer In ',
+            'lesId' => $_POST['lesId'],
+            'mankement' => $_POST['mankement'],
+            'topicError' => ''
+        ];
 
-    $data = $this->addTopic($data);
+        $data = $this->addTopic($data);
 
-    if(empty($result)) {
-        echo "Er zijn op dit moment nog geen voertuigen toegewezen aan deze instructeur.";
-    } else {
-       
+        if (empty($result)) {
+            echo "Er zijn op dit moment nog geen voertuigen toegewezen aan deze instructeur.";
+        } else {
+        }
+        header("Refresh: 3; url='" . URLROOT . "/lessen/index'");
     }
-    header("Refresh: 3; url='" . URLROOT . "/lessen/index'");
-    }
- }
+}
