@@ -11,6 +11,7 @@ class Les
 
     public function getLessons()
     {
+        
         $this->db->query("SELECT instructeur.Id
                                  ,instructeur.Voornaam
                                  ,instructeur.Tussenvoegsel
@@ -58,5 +59,19 @@ class Les
         $result = $this->db->resultSet();
 
         return $result;
+
+
+        //         function addTopic($post) 
+        //     {
+        //         $sql = "INSERT INTO Onderwerp (LesId
+        //                                       ,Onderwerp)
+        //                 VALUES                (:lesId
+        //                                       ,:topic)";
+
+        //         $this->db->query($sql);
+        //         $this->db->bind(':lesId', $post['lesId'], PDO::PARAM_INT);
+        //         $this->db->bind(':topic', $post['topic'], PDO::PARAM_STR);
+        //         return $this->db->execute();
+        //     }
     }
 }

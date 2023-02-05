@@ -18,5 +18,8 @@
     </tbody>
 </table>
 <br>
+<a href="<?= URLROOT; ?>/lessen/addTopic/<?= $data['lesId']; ?>">
+    <input type="button" value="Onderwerp toevoegen">
+</a>
 
 <?php require(APPROOT . '/views/includes/footer.php'); ?>

@@ -35,6 +35,7 @@ class Lessen extends Controller
 
         ";
         }
+        // <td>$info->DatumInDienst</td>
 
         $data = [
             'title' => "Instructeurs in dienst  ",
@@ -82,26 +83,24 @@ class Lessen extends Controller
 
     function addTopic($lesId = NULL)
     {
-        $data = [
-            'title' => 'Voer In ',
-            'lesId' => $lesId,
-            'topicError' => ''
-        ];
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // var_dump($_POST);
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+            $result = $this->lesModel->addTopic($_POST);
 
-        $data = [
-            'title' => 'Voer In ',
-            'lesId' => $_POST['lesId'],
-            'mankement' => $_POST['mankement'],
-            'topicError' => ''
-        ];
-
-        $data = $this->addTopic($data);
-
-        if (empty($result)) {
-            echo "Er zijn op dit moment nog geen voertuigen toegewezen aan deze instructeur.";
-        } else {
+            if ($result) {
+                echo "<p>Het nieuwe onderwerp is succesvol toegevoegd</p>";
+            } else {
+                echo "<p>Het nieuwe onderwerp is niet toegevoegd</p>";
+            }
+            header('Refresh:3; url=' . URLROOT . '/lessen/index');
         }
-        header("Refresh: 3; url='" . URLROOT . "/lessen/index'");
+
+        $data = [
+            'title' => 'Onderwerp Toevoegen',
+            'lesId' => $lesId
+        ];
+        $this->view('lessen/addTopic', $data);
     }
 }
