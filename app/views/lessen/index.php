@@ -13,6 +13,8 @@
         <th>DatumInDienst</th>
         <th>AantalSterren</th>
         <th>Voertuigen</th>
+        <th>Ziekte/Verlof</th>
+		<th>Verwijderen</th>
     </thead>
     <tbody>
         <?= $data['rows'] ?>

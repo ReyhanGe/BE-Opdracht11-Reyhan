@@ -68,8 +68,11 @@ class Lessen extends Controller
                     
                       Naam: $mankement->Voornaam <br>
                       Datum in dienst: $mankement->DatumInDienst <br>
-                      Aantal Sterren: $mankement->AantalSterren <br>  ";
-        }
+                      Aantal Sterren: $mankement->AantalSterren <br>  
+
+                      <td><a href='" . URLROOT . "/instructeurs/index/ziekte/$mankement->Id'><img src='" . URLROOT . "/img/car.png' alt='car'></a></td>
+					  <td><a href='" . URLROOT . "/instructeurs/index/verwijderen/$mankement->Id'><img src='" . URLROOT . "/img/car.png' alt='car'></a></td>
+     ";   }
 
         $data = [
             'title' => 'Door instructeur gebruikte voertuigen',

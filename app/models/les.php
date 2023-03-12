@@ -11,7 +11,7 @@ class Les
 
     public function getLessons()
     {
-        
+
         $this->db->query("SELECT instructeur.Id
                                  ,instructeur.Voornaam
                                  ,instructeur.Tussenvoegsel
@@ -73,5 +73,12 @@ class Les
         //         $this->db->bind(':topic', $post['topic'], PDO::PARAM_STR);
         //         return $this->db->execute();
         //     }
+    }
+
+    public function deleteLessons($id)
+    {
+        $this->db->query("CALL spDeleteInstructeur(:id);");
+        $this->db->bind(":id", $id, PDO::PARAM_INT);
+        return $this->db->execute();
     }
 }
