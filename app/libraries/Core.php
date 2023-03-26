@@ -10,14 +10,15 @@ class Core {
     public function __construct()
     {
         $url = $this->getURL();
+        //   var_dump($this->getURL());exit();
 
         // Kijk if het controllerclass bestand bestaat
-        if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
+        if (file_exists(APPROOT . '/controllers/' . ucwords($url[0]) . '.php')) {
             $this->currentController = ucwords($url[0]);
             unset($url[0]);
         }
 
-        require_once '../app/controllers/' . $this->currentController . '.php';
+        require_once APPROOT . '/controllers/' . $this->currentController . '.php';
         
         // Maak een nieuw object van de controllerclass
         $this->currentController = new $this->currentController();

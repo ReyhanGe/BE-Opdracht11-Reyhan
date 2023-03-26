@@ -5,8 +5,9 @@ class Controller
 {
     public function model($model)
     {
+        //belki nurda bir boşluk gerekir anlamadım
         // Pad naar de modelclass bestand opgeven
-        require_once '../app/models/' . $model . '.php';
+        require_once APPROOT . '/models/' . $model . '.php';
 
         // Nieuw object van de opgegeven model
         return new $model();
@@ -15,8 +16,8 @@ class Controller
 
     public function view($view, $data = [])
     {
-        if (file_exists('../app/views/' . $view . '.php')) {
-            require_once('../app/views/' . $view . '.php');
+        if (file_exists(APPROOT . '/views/' . $view . '.php')) {
+            require_once(APPROOT . '/views/' . $view . '.php');
         } else {
             die('View bestaat niet');
         }
